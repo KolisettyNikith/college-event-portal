@@ -1,70 +1,40 @@
-import { useEffect, useState } from 'react'
-import { supabase } from './supabase'
+import Navbar from "./components/Navbar";
+
+import Hero from "./components/Hero";
+
+import Schools from "./components/Schools";
+
+import Events from "./components/Events";
+
+import AdminPanel from "./components/AdminPanel";
 
 function App() {
-  const [events, setEvents] = useState([])
 
-  useEffect(() => {
-    fetchEvents()
-  }, [])
+  const user = JSON.parse(
+    localStorage.getItem("user")
+  );
 
-  async function fetchEvents() {
-    const { data } = await supabase
-      .from('events')
-      .select('*')
-
-    setEvents(data || [])
-  }
+  const isAdmin =
+    user?.email ===
+    "admin@chanakyauniversity.edu.in";
 
   return (
-    <div
-      style={{
-        backgroundColor: '#0f172a',
-        minHeight: '100vh',
-        color: 'white',
-        padding: '30px',
-        fontFamily: 'Arial',
-      }}
-    >
-      <h1
-        style={{
-          textAlign: 'center',
-          fontSize: '50px',
-          marginBottom: '40px',
-        }}
-      >
-        College Event Analytics Portal
-      </h1>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns:
-            'repeat(auto-fit,minmax(280px,1fr))',
-          gap: '20px',
-        }}
-      >
-        {events.map((event) => (
-          <div
-            key={event.event_id}
-            style={{
-              backgroundColor: '#1e293b',
-              padding: '20px',
-              borderRadius: '15px',
-            }}
-          >
-            <h2>{event.event_name}</h2>
+    <div>
 
-            <p>Fest: {event.fest_name}</p>
+      <Navbar />
 
-            <p>Category: {event.category}</p>
+      <Hero />
 
-            <p>Type: {event.event_type}</p>
-          </div>
-        ))}
-      </div>
+      <Schools />
+
+      <Events />
+
+      {isAdmin && <AdminPanel />}
+
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
+

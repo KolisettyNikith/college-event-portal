@@ -1,0 +1,170 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.auth-container {
+  background-image: url('/src/assets/chanakya.jpg');
+
+  background-size: 100% 100%;
+
+  background-repeat: no-repeat;
+
+  background-position: center;
+
+  min-height: 100vh;
+
+  width: 100vw;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  position: relative;
+
+  padding: 20px;
+}
+
+.overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.auth-box {
+  position: relative;
+
+  z-index: 10;
+
+  width: 100%;
+
+  max-width: 500px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(12px);
+
+  padding: 50px 40px;
+
+  border-radius: 25px;
+
+  color: white;
+
+  text-align: center;
+
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.auth-box h1 {
+  font-size: 70px;
+
+  line-height: 1;
+
+  margin-bottom: 10px;
+
+  font-weight: bold;
+}
+
+.auth-box h2 {
+  font-size: 24px;
+
+  margin-bottom: 40px;
+
+  font-weight: 400;
+}
+
+.auth-box input {
+  width: 100%;
+
+  padding: 18px;
+
+  margin-bottom: 20px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  outline: none;
+
+  font-size: 17px;
+
+  background: rgba(0, 0, 0, 0.35);
+
+  color: white;
+}
+
+.auth-box input::placeholder {
+  color: #d1d5db;
+}
+
+.auth-box button {
+  width: 100%;
+
+  padding: 18px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-size: 20px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.auth-box button:hover {
+  background: #1d4ed8;
+}
+
+.auth-links {
+  margin-top: 30px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.auth-links a {
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .auth-box {
+    padding: 35px 25px;
+  }
+
+  .auth-box h1 {
+    font-size: 48px;
+  }
+
+  .auth-box h2 {
+    font-size: 18px;
+  }
+
+  .auth-links {
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+  .auth-links a {
+    font-size: 16px;
+  }
+}
+

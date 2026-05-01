@@ -1,0 +1,106 @@
+.schools-section{
+  width:100%;
+
+  padding:100px 80px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:80px;
+
+  background:white;
+}
+
+.schools-left{
+  flex:1;
+}
+
+.schools-left h2{
+  font-size:58px;
+
+  color:#1976d2;
+
+  margin-bottom:25px;
+}
+
+.schools-left p{
+  font-size:22px;
+
+  line-height:1.8;
+
+  color:#555;
+}
+
+.schools-grid{
+  flex:1;
+
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:25px;
+}
+
+.school-card{
+  background:#1976d2;
+
+  color:white;
+
+  padding:45px 20px;
+
+  border-radius:25px;
+
+  text-align:center;
+
+  transition:0.4s;
+
+  cursor:pointer;
+}
+
+.school-card:hover{
+  transform:translateY(-8px);
+}
+
+.school-icon{
+  font-size:60px;
+
+  margin-bottom:20px;
+}
+
+.school-card h3{
+  font-size:24px;
+
+  font-weight:600;
+}
+
+@media(max-width:1000px){
+
+  .schools-section{
+    flex-direction:column;
+
+    padding:60px 20px;
+  }
+
+  .schools-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:700px){
+
+  .schools-grid{
+    grid-template-columns:1fr;
+  }
+
+  .schools-left h2{
+    font-size:40px;
+  }
+
+  .schools-left p{
+    font-size:18px;
+  }
+}
+
