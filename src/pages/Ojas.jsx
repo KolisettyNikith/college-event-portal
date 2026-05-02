@@ -137,7 +137,6 @@ export default function Ojas() {
             <h2 className="event-heading" style={{ marginTop: '50px' }}>Comprehensive Fest Analytics ({currentFest})</h2>
             <div className="charts-container">
               <ChartIframe src={`/analytics_charts/${currentFest.toLowerCase()}_school_comparison.html`} title="School Comparison" />
-              <ChartIframe src={`/analytics_charts/${currentFest.toLowerCase()}_winning_comparison.html`} title="Winning Comparison" />
               <ChartIframe src={`/analytics_charts/${currentFest.toLowerCase()}_dept_participation.html`} title="Dept Participation" />
               <ChartIframe src={`/analytics_charts/${currentFest.toLowerCase()}_internal_external.html`} title="Internal External" />
               <ChartIframe src={`/analytics_charts/${currentFest.toLowerCase()}_year_of_study.html`} title="Year of Study" />

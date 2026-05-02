@@ -47,7 +47,7 @@ export default function Hero() {
           Chanakya University.
         </p>
 
-        <button>
+        <button onClick={() => alert("no ongoing events right now check for upcoming events in home page")}>
           Join Events
         </button>
 

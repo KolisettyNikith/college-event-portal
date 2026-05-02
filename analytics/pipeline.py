@@ -75,14 +75,7 @@ def generate_fest_charts_plotly(fest_name, df_part, df_events, df_winners):
         fig = px.bar(colleges, x='Participants', y='College', orientation='h', title=f'[{fest_name}] School Comparison', color='Participants', color_continuous_scale='Viridis')
         save_fig(fig, f"{prefix}_school_comparison.html")
 
-    # 2. Winning Comparison
-    if not df_winners.empty and 'team_name' in df_winners.columns:
-        valid_teams = df_winners.dropna(subset=['team_name'])
-        if not valid_teams.empty:
-            team_wins = valid_teams['team_name'].value_counts().head(5).reset_index()
-            team_wins.columns = ['Team', 'Wins']
-            fig = px.bar(team_wins, x='Team', y='Wins', title=f'[{fest_name}] Top Winning Teams', color='Wins', color_continuous_scale='Magma')
-            save_fig(fig, f"{prefix}_winning_comparison.html")
+    # 2. Winning Comparison (Removed as per request)
 
     # 3. Department Participation
     if not df_part.empty and 'department' in df_part.columns:

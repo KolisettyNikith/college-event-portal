@@ -48,9 +48,6 @@ export default function Navbar() {
           Schools
         </a>
 
-        <a href="/#gallery">
-          Gallery
-        </a>
 
         {user === "true" ? (
 
