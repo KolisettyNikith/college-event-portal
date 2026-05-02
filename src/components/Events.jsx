@@ -1,33 +1,31 @@
+
 import "../styles/events.css";
 
 import { useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 
+import ojasImg from "../assets/ojas.JPG";
+import srujanaImg from "../assets/srujana.JPG";
+import samyutiImg from "../assets/samyuti.JPG";
+
 export default function Events() {
 
   const navigate = useNavigate();
 
-  const [loggedIn, setLoggedIn] =
-    useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
-  const [activeTab, setActiveTab] =
-    useState("past");
+  const [activeTab, setActiveTab] = useState("past");
 
   useEffect(() => {
+    const user = localStorage.getItem("user");
 
-    const logged =
-      localStorage.getItem(
-        "isLoggedIn"
-      );
-
-    if (logged === "true") {
+    if (user) {
       setLoggedIn(true);
     }
-
   }, []);
 
-  function handleTab(tab) {
+  function checkLogin(tab) {
 
     if (!loggedIn) {
 
@@ -42,249 +40,91 @@ export default function Events() {
   }
 
   const pastEvents = [
-
     {
       title: "Ojas 2025",
-
-      type: "Cultural Fest",
-
+      festName: "Ojas",
+      category: "Cultural Fest",
       date: "12 Mar 2025 - 14 Mar 2025",
-
       venue: "Chanakya University",
-
-      image:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+      image: ojasImg,
     },
-
     {
       title: "Srujana 2025",
-
-      type: "Innovation",
-
+      festName: "Srujana",
+      category: "Innovation",
       date: "22 Feb 2025 - 25 Feb 2025",
-
-      venue: "Bengaluru",
-
-      image:
-        "https://images.unsplash.com/photo-1511578314322-379afb476865",
+      venue: "Chanakya Campus",
+      image: srujanaImg,
     },
-
     {
       title: "Samyuti",
-
-      type: "Technical Fest",
-
+      festName: "Samyuti",
+      category: "Technical Fest",
       date: "10 Jan 2025 - 12 Jan 2025",
-
-      venue: "Chanakya Campus",
-
-      image:
-        "https://images.unsplash.com/photo-1505373877841-8d25f7d46678",
+      venue: "Bengaluru",
+      image: samyutiImg,
     },
   ];
 
-  const ongoingEvents =
-    JSON.parse(
-      localStorage.getItem(
-        "ongoingEvents"
-      )
-    ) || [];
-
-  const upcomingEvents =
-    JSON.parse(
-      localStorage.getItem(
-        "upcomingEvents"
-      )
-    ) || [];
+  const ongoingEvents = [];
+  const upcomingEvents = [];
 
   return (
-    <section
-      className="events-section"
-      id="events"
-    >
-
+    <section className="events-section" id="events">
       <h2>Explore Events</h2>
-
-      <div className="event-buttons">
-
+      <div className="event-tabs">
         <button
-          onClick={() =>
-            handleTab("past")
-          }
-          className={
-            activeTab === "past"
-              ? "active"
-              : ""
-          }
+          className={activeTab === "past" ? "active" : ""}
+          onClick={() => checkLogin("past")}
         >
           Past Events
         </button>
-
         <button
-          onClick={() =>
-            handleTab("ongoing")
-          }
-          className={
-            activeTab === "ongoing"
-              ? "active"
-              : ""
-          }
+          className={activeTab === "ongoing" ? "active" : ""}
+          onClick={() => checkLogin("ongoing")}
         >
           Ongoing Events
         </button>
-
         <button
-          onClick={() =>
-            handleTab("upcoming")
-          }
-          className={
-            activeTab === "upcoming"
-              ? "active"
-              : ""
-          }
+          className={activeTab === "upcoming" ? "active" : ""}
+          onClick={() => checkLogin("upcoming")}
         >
           Upcoming Events
         </button>
-
       </div>
 
       <div className="events-grid">
-
         {activeTab === "past" &&
-          pastEvents.map(
-            (event, index) => (
-
-              <div
-                className="event-card"
-                key={index}
-              >
-
-                <img
-                  src={event.image}
-                  alt=""
-                />
-
-                <div className="event-info">
-
-                  <span>
-                    {event.type}
-                  </span>
-
-                  <h3>
-                    {event.title}
-                  </h3>
-
-                  <p>
-                    {event.date}
-                  </p>
-
-                  <small>
-                    {event.venue}
-                  </small>
-
-                </div>
-
+          pastEvents.map((event, index) => (
+            <div 
+              className="event-card" 
+              key={index}
+              onClick={() => navigate("/ojas", { state: { fest: event.festName } })}
+              style={{ cursor: "pointer" }}
+            >
+              <img src={event.image} alt="" />
+              <div className="event-content">
+                <span>{event.category}</span>
+                <h3>{event.title}</h3>
+                <p>{event.date}</p>
+                <small>{event.venue}</small>
               </div>
-            )
-          )}
-
-        {activeTab === "ongoing" && (
-
-          ongoingEvents.length > 0 ? (
-
-            ongoingEvents.map(
-              (event, index) => (
-
-                <div
-                  className="event-card"
-                  key={index}
-                >
-
-                  <img
-                    src={event.image}
-                    alt=""
-                  />
-
-                  <div className="event-info">
-
-                    <span>
-                      {event.type}
-                    </span>
-
-                    <h3>
-                      {event.title}
-                    </h3>
-
-                    <p>
-                      {event.date}
-                    </p>
-
-                    <small>
-                      {event.venue}
-                    </small>
-
-                  </div>
-
-                </div>
-              )
-            )
-
-          ) : (
-
-            <div className="empty-box">
-              No ongoing events created.
             </div>
-          )
-        )}
+          ))}
 
-        {activeTab === "upcoming" && (
-
-          upcomingEvents.length > 0 ? (
-
-            upcomingEvents.map(
-              (event, index) => (
-
-                <div
-                  className="event-card"
-                  key={index}
-                >
-
-                  <img
-                    src={event.image}
-                    alt=""
-                  />
-
-                  <div className="event-info">
-
-                    <span>
-                      {event.type}
-                    </span>
-
-                    <h3>
-                      {event.title}
-                    </h3>
-
-                    <p>
-                      {event.date}
-                    </p>
-
-                    <small>
-                      {event.venue}
-                    </small>
-
-                  </div>
-
-                </div>
-              )
-            )
-
-          ) : (
-
+        {activeTab === "ongoing" &&
+          (ongoingEvents.length === 0 ? (
             <div className="empty-box">
-              No upcoming events created.
+              No ongoing events created yet.
             </div>
-          )
-        )}
+          ) : null)}
+
+        {activeTab === "upcoming" &&
+          (upcomingEvents.length === 0 ? (
+            <div className="empty-box">
+              No upcoming events created yet.
+            </div>
+          ) : null)}
 
       </div>
 

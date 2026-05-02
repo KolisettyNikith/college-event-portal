@@ -2,15 +2,14 @@ import "../styles/hero.css";
 
 import { useEffect, useState } from "react";
 
+import hero1Img from "../assets/hero1.jpg";
+import hero2Img from "../assets/hero2.JPG";
+import hero3Img from "../assets/hero3.JPG";
+
 const images = [
-
-  "https://images.unsplash.com/photo-1523050854058-8df90110c9f1",
-
-  "https://images.unsplash.com/photo-1562774053-701939374585",
-
-  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
-
-  "https://images.unsplash.com/photo-1541339907198-e08756dedf3f",
+  hero1Img,
+  hero2Img,
+  hero3Img
 ];
 
 export default function Hero() {
@@ -66,4 +65,3 @@ export default function Hero() {
     </section>
   );
 }
-

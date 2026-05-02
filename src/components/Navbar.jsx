@@ -24,9 +24,9 @@ export default function Navbar() {
   return (
     <nav className="navbar">
 
-      <div className="logo">
+      <Link to="/" className="logo" style={{ textDecoration: 'none', color: 'inherit' }}>
         Chanakya University
-      </div>
+      </Link>
 
       <input
         type="text"
@@ -36,15 +36,19 @@ export default function Navbar() {
 
       <div className="nav-links">
 
-        <a href="#events">
+        <Link to="/">
+          Home
+        </Link>
+
+        <a href="/#events">
           Explore Events
         </a>
 
-        <a href="#schools">
+        <a href="/#schools">
           Schools
         </a>
 
-        <a href="#gallery">
+        <a href="/#gallery">
           Gallery
         </a>
 
@@ -73,4 +77,3 @@ export default function Navbar() {
     </nav>
   );
 }
-

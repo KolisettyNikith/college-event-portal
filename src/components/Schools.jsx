@@ -1,3 +1,4 @@
+
 import "../styles/schools.css";
 
 const schools = [
